@@ -97,7 +97,7 @@ export default function Sidebar() {
 
             {/* sign */}
             <div className="sign">
-                <p>By ApnaCollege &hearts;</p>
+                <p>By Sanjay &hearts;</p>
             </div>
         </section>
     )
