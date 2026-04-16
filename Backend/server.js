@@ -9,9 +9,7 @@ const app = express();
 const PORT = 8080;
 
 app.use(express.json());
-app.use(cors({
-  origin: "https://sigma-gpt-bice.vercel.app/"
-}));
+app.use(cors());
 
 app.use("/api", chatRoutes);
 

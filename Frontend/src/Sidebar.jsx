@@ -2,6 +2,8 @@ import "./Sidebar.css";
 import { useContext , useEffect } from "react";
 import { MyContext } from "./MyContext.jsx";
 import {v1 as uuidv1} from "uuid";
+import logo from "./assets/blacklogo.png";
+
 
 export default function Sidebar() {
     const {allThreads, setAllThreads, currThreadId, setNewChat, setPrompt, setReply, setCurrThreadId, setPrevChats} = useContext(MyContext);
@@ -9,7 +11,7 @@ export default function Sidebar() {
     const getAllThreads = async () => {
 
         try{
-            const response = await fetch("http://sigmagpt-ioc5.onrender.com/api/thread");
+            const response = await fetch("https://sigmagpt-ioc5.onrender.com/api/thread");
             const res = await response.json();
             const filteredData = res.map(thread => ({threadId: thread.threadId, title: thread.title}));
             console.log(filteredData);
@@ -37,7 +39,7 @@ export default function Sidebar() {
         setCurrThreadId(newThreadId);
 
         try{
-            const response = await fetch(`http://sigmagpt-ioc5.onrender.com/api/thread/${newThreadId}`)
+            const response = await fetch(`https://sigmagpt-ioc5.onrender.com/api/thread/${newThreadId}`)
             const res = await response.json();
             console.log(res);
             setPrevChats(res);
@@ -50,7 +52,7 @@ export default function Sidebar() {
 
     const deleteThread = async (threadId) => {
         try {
-            const response = await fetch(`http://sigmagpt-ioc5.onrender.com/api/thread/${threadId}`, {method: "DELETE"});
+            const response = await fetch(`https://sigmagpt-ioc5.onrender.com/api/thread/${threadId}`, {method: "DELETE"});
             const res = await response.json();
             console.log(res);
 
@@ -71,7 +73,7 @@ export default function Sidebar() {
         <section className="sidebar">
             {/* new chat button */}
             <button onClick={createNewChat}>
-                <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo"/>
+                <img src={logo} alt="gpt logo" className="logo"/>
                 <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
 

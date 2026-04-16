@@ -25,7 +25,7 @@ export default function ChatWindow() {
 		};
 
 		try {
-			const response = await fetch("http://sigmagpt-ioc5.onrender.com/api/chat", options);
+			const response = await fetch("https://sigmagpt-ioc5.onrender.com/api/chat", options);
 			const res = await response.json();
 			console.log(res);
             setReply(res.reply);
