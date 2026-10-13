@@ -15,7 +15,7 @@ app.use("/api", chatRoutes);
 
 // ✅ Groq setup
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
+  apiKey: process.env.GROQ_API_KEY_LATEST,
 });
 
 // // ✅ Chat API (replacing OpenAI)
