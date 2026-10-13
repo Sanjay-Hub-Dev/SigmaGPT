@@ -30,17 +30,16 @@
 
 // export default getOpenAIAPIResponse;
 
-
 import Groq from "groq-sdk";
 
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY_LATEST,
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 const getOpenAIAPIResponse = async (message) => {
   try {
     const response = await groq.chat.completions.create({
-      model: "gemma2-9b-it", // Valid, active model on Groq
+      model: "openai/gpt-oss-20b", // Active model on Groq
       messages: [
         {
           role: "user",
@@ -51,8 +50,8 @@ const getOpenAIAPIResponse = async (message) => {
 
     return response.choices[0]?.message?.content || "";
   } catch (error) {
-    console.error("Groq Error:", error);
-    throw error; // Let the route handler catch it where 'res' actually exists
+    console.error("Groq Error:", error?.message || error);
+    throw error; // Do NOT write res.status here!
   }
 };
 
