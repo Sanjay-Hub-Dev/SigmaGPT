@@ -14,7 +14,7 @@ const getOpenAIAPIResponse = async(message) => {
       messages: [
         { role: "user", content: userMessage }
       ],
-      model: "llama-3.1-8b-instant",
+      model: "llama-3.3-70b-versatile",
     });
 
     const reply = response.choices[0].message.content;
